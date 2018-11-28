@@ -1,0 +1,21 @@
+BootStrap: docker
+From: ubuntu:16.04
+
+%labels
+Maintainer klein
+base.image="ubuntu:16.04"
+version="1"
+software="porechop"
+software.version="0.2.3"
+
+%post
+apt-get update
+apt-get install -y python3 python3-pip git
+apt-get clean && apt-get purge
+
+pip3 install https://github.com/rrwick/Porechop/archive/v0.2.3.tar.gz
+
+
+
+%runscript
+exec porechop "$@"

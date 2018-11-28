@@ -1,0 +1,24 @@
+BootStrap: docker
+From: ubuntu:18.04
+
+%labels
+Maintainer TOGGLE TEAM
+base.image="ubuntu:18.04"
+version="1"
+software="fastQC"
+software.version="0.10.1"
+
+%post
+	apt-get -y update && apt-get -y install wget unzip openjdk-11-jre perl
+	cpan install findbin
+	mkdir -p /opt/sources
+	cd /opt/sources
+	wget -c https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10.1.zip
+	unzip -u fastqc_v0.10.1.zip
+	cd FastQC
+	chmod +x fastqc
+
+	rm /opt/sources/fastqc_v0.10.1.zip
+
+%runscript
+exec /opt/sources/FastQC/fastqc "$@"

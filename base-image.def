@@ -1,0 +1,11 @@
+BootStrap: docker
+From: ubuntu:16.04
+
+%labels
+Maintainer tando
+base.image="ubuntu:16.04"
+version="1"
+software="Biocontainers base Image"
+software.version="08252016"
+
+%post

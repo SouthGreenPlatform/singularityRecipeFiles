@@ -1,0 +1,30 @@
+BootStrap: docker
+From: ubuntu:16.04
+
+%labels
+Maintainer klein
+base.image="ubuntu:16.04"
+version="1"
+software="GATK"
+software.version="3.8-1"
+
+%post
+apt-get update
+apt-get install -y build-essential wget zlib1g-dev openjdk-8-jdk-headless maven git
+apt-get clean && apt-get purge
+
+cd /tmp
+
+git clone https://github.com/broadgsa/gatk-protected.git gatk
+cd gatk
+git checkout 3.8-1
+mvn package
+cp target/GenomeAnalysisTK.jar /opt
+cd /tmp
+rm -r gatk
+
+
+
+
+%runscript
+exec java -jar /opt/GenomeAnalysisTK.jar "$@"

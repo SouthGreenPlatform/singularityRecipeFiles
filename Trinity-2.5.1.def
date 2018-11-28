@@ -1,0 +1,38 @@
+BootStrap: docker
+From: ubuntu:18.04
+
+%labels
+Maintainer tando
+base.image="ubuntu:18.04"
+version="1"
+software="trinity"
+software.version="2.5.1"
+
+%help
+Being in the folder of the container
+Launch the command: singularity run Trinity-2.5.1.simg + arguments to use Trinity +  arguments
+
+%post
+apt-get update
+apt-get install -y build-essential wget gcc zlib1g-dev 
+mkdir -p /opt/sources/
+cd /opt/sources/
+wget https://github.com/trinityrnaseq/trinityrnaseq/archive/Trinity-v2.5.1.tar.gz
+tar xvfz Trinity-v2.5.1.tar.gz
+cd trinityrnaseq-Trinity-v2.5.1
+make plugins
+cd trinity-plugins/
+make
+cd ../Inchworm/
+./configure --prefix=`pwd`
+make
+make install
+cd ../..
+cp -r trinityrnaseq-Trinity-v2.5.1 /usr/local/Trinity-2.5.1
+chmod +x -R /usr/local/Trinity-2.5.1
+echo 'export PATH=$PATH:/usr/local/Trinity-2.5.1' >> $SINGULARITY_ENVIRONMENT
+
+%runscript
+exec /usr/local/Trinity-2.5.1/Trinity "$@"
+
+

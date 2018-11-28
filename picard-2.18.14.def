@@ -1,0 +1,21 @@
+BootStrap: docker
+From: ubuntu:16.04
+
+%labels
+Maintainer klein
+base.image="ubuntu:16.04"
+version="1"
+software="picardtools"
+software.version="2.18.14"
+
+%post
+apt-get update
+apt-get install -y wget openjdk-8-jdk-headless
+apt-get clean && apt-get purge
+
+cd /opt
+
+wget https://github.com/broadinstitute/picard/releases/download/2.18.14/picard.jar
+
+%runscript
+exec java -jar /opt/picard.jar "$@"

@@ -1,0 +1,27 @@
+BootStrap: docker
+From: ubuntu:16.04
+
+%labels
+Maintainer klein
+base.image="ubuntu:16.04"
+version="1"
+software="bedtools"
+software.version="2.27.1"
+
+%post
+apt-get update
+apt-get install -y build-essential wget zlib1g-dev python
+apt-get clean && apt-get purge
+
+cd /opt
+
+wget https://github.com/arq5x/bedtools2/releases/download/v2.27.1/bedtools-2.27.1.tar.gz
+tar -zxf bedtools-2.27.1.tar.gz
+cd bedtools2
+make
+make install
+cd /opt
+rm -r *
+
+%runscript
+exec bedtools "$@"

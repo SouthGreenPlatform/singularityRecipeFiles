@@ -1,0 +1,35 @@
+BootStrap: docker
+From: ubuntu:18.04
+
+%labels
+Maintainer tando
+base.image="ubuntu:18.04"
+version="1"
+software="tophat"
+software.version="2.1.1"
+
+%help
+Being in the folder of the container.
+Launch the command: singularity exec tophat-2.1.1.simg ls /usr/local/bin to check the programs of tophat you can launch
+Launch the command: singularity exec tophat-2.1.1.simg program + arguments to launch the chosen program
+
+%post
+apt-get update
+apt-get install -y build-essential wget gcc zlib1g-dev python libboost-dev libboost-thread-dev perl unzip
+mkdir -p /opt/sources/
+cd /opt/sources/
+wget http://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz
+wget https://downloads.sourceforge.net/project/bowtie-bio/bowtie2/2.3.4.3/bowtie2-2.3.4.3-linux-x86_64.zip
+unzip bowtie2-2.3.4.3-linux-x86_64.zip
+cd bowtie2-2.3.4.3-linux-x86_64
+cp bowtie2* /usr/local/bin
+cd ..
+tar xvfz tophat-2.1.1.Linux_x86_64.tar.gz
+cp -r tophat-2.1.1.Linux_x86_64/* /usr/local/bin
+chmod +x -R /usr/local/bin
+echo 'export PATH=$PATH:/usr/local/bin' >> $SINGULARITY_ENVIRONMENT
+
+%runscript
+exec /usr/local/bin/"$@"
+
+

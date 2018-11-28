@@ -1,0 +1,30 @@
+BootStrap: docker
+From: ubuntu:18.04
+
+%labels
+Maintainer tando
+base.image="ubuntu:18.04"
+version="1"
+software="tophat"
+software.version="2.1.1"
+
+%help
+Being in the folder of the container.
+Launch the command: singularity exec cufflinks-2.2.1.simg ls /usr/local/cufflinks-2.2.1 to check the programs of cufflinks you can launch
+Launch the command: singularity exec cufflinks-2.2.1.simg program + arguments to launch the chosen program 
+
+%post
+apt-get update
+apt-get install -y build-essential wget gcc zlib1g-dev 
+mkdir -p /opt/sources/
+cd /opt/sources/
+wget http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
+tar xvfz cufflinks-2.2.1.Linux_x86_64.tar.gz
+cp -r cufflinks-2.2.1.Linux_x86_64 /usr/local/cufflinks-2.2.1
+chmod +x -R /usr/local/cufflinks-2.2.1
+echo 'export PATH=$PATH:/usr/local/cufflinks-2.2.1' >> $SINGULARITY_ENVIRONMENT
+
+%runscript
+exec /usr/local/cufflinks-2.1.1/"$@"
+
+

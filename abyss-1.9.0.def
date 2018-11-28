@@ -1,0 +1,50 @@
+Bootstrap: docker
+From: ubuntu:16.04
+IncludeCmd: yes
+
+%labels
+
+Maintainer noel
+base.image="ubuntu:16.04"
+version="1"
+software="abyss"
+software.version="1.9.0"
+
+%environment
+
+PATH=/opt/abyss/bin:$PATH
+
+%post
+
+apt update
+apt install -y build-essential wget zlib1g-dev libncurses5-dev
+apt install -y libboost-all-dev openmpi-bin libopenmpi-dev libsparsehash-dev libsqlite3-dev bsdmainutils
+## samtools
+
+wget https://downloads.sourceforge.net/project/samtools/samtools/0.1.19/samtools-0.1.19.tar.bz2
+tar xjf samtools-0.1.19.tar.bz2
+cd samtools-0.1.19
+make
+
+chmod -R 777 .
+cd ..
+rm -r samtools-0.1.19.tar.bz2
+
+## abyss
+
+wget https://github.com/bcgsc/abyss/releases/download/1.9.0/abyss-1.9.0.tar.gz
+tar xvf abyss-1.9.0.tar.gz
+cd abyss-1.9.0
+./configure
+make
+make install
+
+chmod -R 777 .
+cd ..
+rm -r abyss-1.9.0.tar.gz
+
+
+%runscript
+
+exec abyss-pe "$@"
+

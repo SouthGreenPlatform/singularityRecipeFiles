@@ -1,0 +1,27 @@
+BootStrap: docker
+From: ubuntu:16.04
+
+%labels
+Maintainer klein
+base.image="ubuntu:16.04"
+version="1"
+software="bowtie2"
+software.version="2.3.4.3"
+
+%post
+apt-get update
+apt-get install -y wget unzip perl python
+apt-get clean && apt-get purge
+
+cd /opt
+
+wget https://downloads.sourceforge.net/project/bowtie-bio/bowtie2/2.3.4.3/bowtie2-2.3.4.3-linux-x86_64.zip
+unzip bowtie2-2.3.4.3-linux-x86_64.zip
+cd bowtie2-2.3.4.3-linux-x86_64
+cp bowtie2* /usr/local/bin
+
+cd /opt
+rm -r *
+
+%runscript
+LANG=C exec bowtie2 "$@"

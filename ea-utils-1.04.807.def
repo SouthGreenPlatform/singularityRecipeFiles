@@ -1,0 +1,33 @@
+BootStrap: docker
+From: ubuntu:18.04
+
+%labels
+Maintainer TOGGLE TEAM
+base.image="ubuntu:18.04"
+version="1"
+software="ea-utils"
+software.version="1.04.807"
+
+%post
+	apt-get -y update && apt-get -y install wget unzip build-essential subversion zlib1g-dev libgsl0-dev git bamtools
+	mkdir -p /opt/sources
+	cd /opt/sources
+	wget https://github.com/ExpressionAnalysis/ea-utils/zipball/master  -O eaUtils-1.04.807.zip
+	unzip eaUtils-1.04.807.zip
+	
+	
+	cd /opt/sources/ExpressionAnalysis-ea-utils-bd148d4/clipper
+
+	sed -ie 's|dirname(__FILE__) . "|"\/opt\/sources\/ExpressionAnalysis-ea-utils-bd148d4\/clipper\/t\/|' /opt/sources/ExpressionAnalysis-ea-utils-bd148d4/clipper/t/mcf.t
+	sed -ie 's|dirname(__FILE__) . "|"\/opt\/sources\/ExpressionAnalysis-ea-utils-bd148d4\/clipper\/t\/|' /opt/sources/ExpressionAnalysis-ea-utils-bd148d4/clipper/t/join.t
+	sed -ie 's|dirname(__FILE__) . "|"\/opt\/sources\/ExpressionAnalysis-ea-utils-bd148d4\/clipper\/t\/|' /opt/sources/ExpressionAnalysis-ea-utils-bd148d4/clipper/t/multx.t
+
+	chmod 755 /opt/sources/ExpressionAnalysis-ea-utils-bd148d4/clipper/t/test-prep.pl
+	
+	make
+	make install
+	
+	rm /opt/sources/eaUtils-1.04.807.zip
+
+%runscript
+exec /usr/bin/"$@"
