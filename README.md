@@ -2,12 +2,9 @@
 # Singularity Recipe Files
 
 This repository provides a series of [Singularity](https://singularity.lbl.gov/) recipe files used to easily deploy numerous bioinformatics containers.  
-All the singularity containers are ready to be used by the bioinformatics community and to be integrated into [TOGGLe](http://toggle.southgreen.fr).
+All the singularity containers are ready to be used by the bioinformatics community and to be integrated into the [TOGGLe](http://toggle.southgreen.fr) workflow manager.
 
-The [South Green platform](http://www.southgreen.fr/) ...
-
-
-ubuntu 16.04 / 18.04
+The images are based on either 16.04 or 18.04 Ubuntu versions. All compiled images can be found at http://bioinfo-storage.ird.fr/SingularityImages
 
 Contact : Ndomassi Tando (ndomassi.tando@ird.fr)
 
