@@ -11,8 +11,8 @@ Contact : Ndomassi Tando (ndomassi.tando@ird.fr)
 |Software | Version | Maintainer | tested and deployed on  |
 | ------------- | ------------- | ------------- | ------------- |
 | [Abyss](http://www.bcgsc.ca/platform/bioinfo/software/abyss)  | 1.9  | Valérie NOEL (UMR MIVEGEC)  |   <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
-| [atropos](https://github.com/jdidion/atropos)  | 1.1.14 | Ndomassi tando  (UMR DIADE) |   <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
-| [bedtools](https://bedtools.readthedocs.io/en/latest/index.html)  |2.27.1 | Valentin Klein (UMR DIADE)  |   <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
+| [atropos](https://github.com/jdidion/atropos)  | 1.1.14 | Ndomassi TANDO  (UMR DIADE) |   <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
+| [bedtools](https://bedtools.readthedocs.io/en/latest/index.html)  |2.27.1 | Valentin KLEIN (UMR DIADE)  |   <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
 
 
 
