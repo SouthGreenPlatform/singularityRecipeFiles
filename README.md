@@ -8,7 +8,7 @@ The images are based on either 16.04 or 18.04 Ubuntu versions. All compiled imag
 
 Contact : Ndomassi Tando (ndomassi.tando@ird.fr)
 
-|Software | Version | Maintener | tested and deployed on  |
+|Software | Version | Maintainer | tested and deployed on  |
 | ------------- | ------------- | ------------- | ------------- |
 | [Abyss](http://www.bcgsc.ca/platform/bioinfo/software/abyss)  | 1.9  | Valérie NOEL (UMR MIVEGEC)  |   <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
 | [atropos](https://github.com/jdidion/atropos)  | 1.1.14 | Ndomassi tando  (UMR DIADE) |   <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
