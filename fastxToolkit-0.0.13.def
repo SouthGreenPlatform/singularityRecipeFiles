@@ -1,0 +1,39 @@
+BootStrap: docker
+From: ubuntu:16.04
+
+
+%environment
+PATH=$PATH:/usr/local/fastxToolkit-0.0.13/bin/
+
+
+%labels
+Maintainer Valérie Noel - IRD Itrop Cluster, MIVEGEC Unit
+base.image="ubuntu:16.04"
+version="1"
+software="fastx-Toolkit"
+software.version="0.0.13"
+
+%help
+Description: The FASTX-Toolkit is a collection of command line tools for Short-Reads
+FASTA/FASTQ files preprocessing.
+Launch the command: singularity exec FastxToolkit-0.0.13.simg ls /usr/local/fastxToolkit-0.0.13/ to check the program of FastxToolkit you can launch
+Launch the command: singularity exec FastxToolkit-0.0.13.simg program + arguments to launch the chosen program
+
+%post
+apt-get update
+apt-get install -y build-essential wget zlib1g-dev libncurses5-dev git libgtextutils0v5 libgd-dev
+
+/usr/bin/cpan5.22-x86_64-linux-gnu -i GD::Graph::bars
+/usr/bin/cpan5.22-x86_64-linux-gnu -i PerlIO::gzip
+
+cd /opt
+
+wget http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
+tar xjvf fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
+mkdir /usr/local/fastxToolkit-0.0.13
+cp -r bin /usr/local/fastxToolkit-0.0.13/
+
+rm -rf bin
+
+%runscript
+exec /bin/bash "$@"
