@@ -13,6 +13,6 @@ Contact : Ndomassi Tando (ndomassi.tando@ird.fr)
 | [Abyss](http://www.bcgsc.ca/platform/bioinfo/software/abyss)  | 1.9  | Valérie NOEL (UMR MIVEGEC)  |   <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
 | [atropos](https://github.com/jdidion/atropos)  | 1.1.14 | Ndomassi TANDO  (UMR DIADE) |   <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
 | [bedtools](https://bedtools.readthedocs.io/en/latest/index.html)  |2.27.1 | Valentin KLEIN (UMR DIADE)  |   <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
-
+| [FASTX-Toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) | 0.0.13  | Valérie NOEL (UMR MIVEGEC)  | <img src="https://github.com/SouthGreenPlatform/trainings/blob/gh-pages/images/logo_ird.png" height = "20" > (i-trop cluster) |
 
 
